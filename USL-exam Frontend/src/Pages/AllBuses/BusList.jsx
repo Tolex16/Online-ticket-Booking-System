@@ -36,11 +36,11 @@ const AllBuses = () => {
           {buses.map((bus) => (
             <div key={bus.id} className={Styles.busCard}>
               <h2>{bus.name}</h2>
-              <p><strong>Route:</strong> {bus.route.start} to {bus.route.end}</p>
+              <p><strong>Route:</strong> {bus.origin} to {bus.destination}</p>
               <p><strong>Operator:</strong> {bus.driverName}</p>
-              <p><strong>Contact:</strong> {bus.operator.contact}</p>
+              <p><strong>Contact:</strong> {bus.phoneNumber}</p>
               <p><strong>Day of Operation:</strong> {bus.dayOfOperation}</p>
-              <p><strong>Time:</strong> {bus.time}</p>
+              <p><strong>Capacity:</strong> {bus.capacity}</p>
             </div>
           ))}
         </div>

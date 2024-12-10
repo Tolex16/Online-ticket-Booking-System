@@ -87,7 +87,7 @@ const validateFields = () => {
 
       if (response.status === 200) {
         toast.success('Registration Successful, proceed for verification');
-        navigate('/login-passenger');
+        navigate('/login');
       } else {
         throw new Error('Registration failed');
       }

@@ -80,7 +80,15 @@ public class BusServiceImpl implements BusService {
                 .collect(Collectors.toList());
         return new ResponseEntity<>(buses, HttpStatus.OK);
     }
+    public Iterable<BusEntity> getAllOperators() {
+        Iterable<BusEntity> operators = busRepository.findAll();
+        return operators;
+    }
 
+    public Iterable<BusEntity> getOperatorsByRoute(Long routeId) {
+        Iterable<BusEntity> operators = busRepository.findByRoute_RouteId(routeId);
+        return operators;
+    }
     @Override
     public ResponseEntity<List<BusDto>> getBusesByRouteId(Long routeId) {
         List<BusDto> buses = busRepository.findAll()

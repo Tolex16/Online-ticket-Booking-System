@@ -7,10 +7,11 @@ import { AddSharp } from '@mui/icons-material';
 import axios from 'axios';
 import { BASE_URL } from '../../config';
 
-function AdminManageRoutes() {
+function AdminUpdateRoutes() {
   const navigate = useNavigate();
   const [error, setError] = useState('');
   const [routeDetails, setRouteDetails] = useState({
+    routeId: '',
     origin: '',
     destination: '',
     departureDate: '',
@@ -23,7 +24,7 @@ function AdminManageRoutes() {
     e.preventDefault();
     try {
 
-      const response = await axios.post(`${BASE_URL}/admin/routes/create`, routeDetails, {
+      const response = await axios.post(`${BASE_URL}/admin/update-route/${routeDetails.routeId}`, routeDetails, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json",
@@ -54,6 +55,16 @@ function AdminManageRoutes() {
         <form onSubmit={handleRouteSubmit} className={Styles.form}>
           <h1 style={{ textAlign: 'center' }}>Manage Routes & Buses</h1>
 
+            <label>Route ID</label>
+            <input
+              type="number"
+              name="routeId"
+              value={routeDetails.routeId}
+              onChange={handleChange}
+              aria-label="Route Id"
+              required
+            />
+
           <label>Origin:</label>
           <input
             type="text"
@@ -74,13 +85,13 @@ function AdminManageRoutes() {
             required
           />
 
-          <label>Departure Date:</label>
+          <label>Departure Day:</label>
           <input
-            type="date"
-            name="departureDate"
+            type="text"
+            name="departureDay"
             value={routeDetails.departureDate}
             onChange={handleChange}
-            placeholder="Enter Departure Date"
+            placeholder="Enter Departure Day"
             required
           />
 
@@ -114,7 +125,7 @@ function AdminManageRoutes() {
           />
 
           <button className={Styles.submit} type="submit">
-            Submit <AddSharp />
+            Update Route<AddSharp />
           </button>
 
           {error && <p className={Styles.error}>{error}</p>}
@@ -125,4 +136,4 @@ function AdminManageRoutes() {
   );
 }
 
-export default AdminManageRoutes;
+export default AdminUpdateRoutes;

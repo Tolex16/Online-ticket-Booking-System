@@ -1,6 +1,7 @@
 package com.example.USLTEST.controllers;
 
 
+import com.example.USLTEST.Exception.PasswordMismatchException;
 import com.example.USLTEST.Exception.UserAlreadyExistsException;
 import com.example.USLTEST.domain.DTO.ChangePasswordRequest;
 import com.example.USLTEST.domain.DTO.SignInRequest;
@@ -26,7 +27,7 @@ public class AuthenticationController {
     public ResponseEntity register(@RequestBody SignUpDto signUpDto) {
         try {
             return authenticationService.signUp(signUpDto);
-        } catch (UserAlreadyExistsException ex) {
+        } catch (UserAlreadyExistsException | PasswordMismatchException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }

@@ -2,6 +2,7 @@ package com.example.USLTEST.controllers;
 
 import com.example.USLTEST.Exception.UserAlreadyExistsException;
 import com.example.USLTEST.domain.DTO.*;
+import com.example.USLTEST.domain.entity.BusEntity;
 import com.example.USLTEST.domain.entity.TicketEntity;
 import com.example.USLTEST.domain.mapper.Mapper;
 import com.example.USLTEST.service.BusService;
@@ -26,6 +27,7 @@ public class PassengerController {
     private final BusService busService;
 
     private final Mapper<TicketEntity, TicketList> ticketMapper;
+    private final Mapper<BusEntity, OperatorList> operatorMapper;
 
     private final UserService userService;
 
@@ -79,6 +81,23 @@ public class PassengerController {
         return busService.getAllBuses();
     }
 
+    @GetMapping("/get-operators")
+    public ResponseEntity<Iterable<OperatorList>> getAllOperators() {
+        Iterable<BusEntity> operators = busService.getAllOperators();
+        Iterable<OperatorList> allOperators = operatorMapper.mapListTo(operators);
+        return ResponseEntity.ok(allOperators);
+    }
+    @GetMapping("/get-operators-route")
+    public ResponseEntity<Iterable<OperatorList>> getAllOperatorsByRoute(Long routeId) {
+        Iterable<BusEntity> operators = busService.getOperatorsByRoute(routeId);
+        Iterable<OperatorList> allOperatorsByRoute = operatorMapper.mapListTo(operators);
+        return ResponseEntity.ok(allOperatorsByRoute);
+    }
+    @GetMapping("/all-buses-route/routeId")
+    public ResponseEntity<List<BusDto>> getAllBusesByRoute(Long routeId) {
+        return busService.getBusesByRouteId(routeId);
+    }
+
     @DeleteMapping("/routes/{id}")
     public ResponseEntity<Void> deleteRoute(@PathVariable Long id) {
         return routeService.deleteRoute(id);
@@ -94,9 +113,9 @@ public class PassengerController {
         return routeService.getAllRoutes();
     }
 
-//    @GetMapping("/bus/{busId}")
-//    public ResponseEntity<List<RouteDto>> getRoutesByBusId(@PathVariable Long busId) {
-////        return routeService.getRoutesByBusId(busId);
+//    @GetMapping("/bus/{routeId}")
+//    public ResponseEntity<List<BusDto>> getRoutesByBusId(@PathVariable Long busId) {
+//       return routeService.getRoutesByBusId(busId);
 //    }
 
     @GetMapping("/routes/search")

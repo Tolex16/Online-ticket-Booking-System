@@ -9,7 +9,7 @@ const LoginModal = ({ isOpen, onClose, children }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     try {
-        navigate("/login-passenger");
+        navigate("/login");
       } catch (error) {
         console.log(error);
       }

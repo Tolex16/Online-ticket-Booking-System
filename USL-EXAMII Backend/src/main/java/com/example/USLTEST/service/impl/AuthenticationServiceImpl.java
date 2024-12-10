@@ -2,6 +2,7 @@ package com.example.USLTEST.service.impl;
 
 
 import com.example.USLTEST.Exception.EmailNotFoundException;
+import com.example.USLTEST.Exception.PasswordMismatchException;
 import com.example.USLTEST.Exception.UserNotFoundException;
 import com.example.USLTEST.domain.DTO.SignInRequest;
 import com.example.USLTEST.domain.DTO.SignInResponse;
@@ -45,6 +46,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             if(userRepository.existsByEmail(signUpDto.getEmail())){
                 throw new UserNotFoundException("There is an account associated with this email already");
+            }
+
+            if (!signUpDto.getPassword().equals(signUpDto.getConfirmPassword())) {
+                throw new PasswordMismatchException("Password does not match");
             }
 
             signUpDto.setPassword(passwordEncoder.encode(signUpDto.getPassword()));

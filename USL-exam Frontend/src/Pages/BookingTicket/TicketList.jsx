@@ -50,10 +50,10 @@ const PassengerTickets = () => {
               <p><strong>Driver Name:</strong> {ticket.driverName}</p>
               <p><strong>Estimated Duration:</strong> {ticket.estimatedDuration}</p>
               <p><strong>Booking Date and Time:</strong> {ticket.bookingDateTime}</p>
-              <p><strong>Route:</strong> {ticket.origin} to {ticket.destination}</p>
+              <p><strong>Route:</strong> {ticket.origin} - {ticket.destination}</p>
               <p><strong>Seat Number:</strong> {ticket.seatNumber}</p>
               <p><strong>Price:</strong> {ticket.price}</p>
-              <p><strong>Departure Day:</strong> {ticket.departureDay}</p>
+              <p><strong>Departure Date:</strong> {ticket.departureDay}</p>
               <p><strong>Status:</strong> {ticket.status}</p>
              {ticket.status !== 'CANCELLED' && (
               <button onClick={() => cancelTicket(ticket.id)}>Cancel Ticket</button>

@@ -9,12 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const BookTicket = () => {
   const [ticketDetails, setTicketDetails] = useState({
-    routeId: "",
-    dateOfTravel: "",
-    numberOfTickets: 1,
-    passengerName: "",
-    email: "",
-    phoneNumber: "",
+    busId: "",
+    seatNumber: "",
+
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -24,22 +21,9 @@ const BookTicket = () => {
   // Function to validate form fields
   const validateFields = () => {
     const errors = {};
-    if (!ticketDetails.routeId.trim()) errors.routeId = "Route ID is required.";
-    if (!ticketDetails.dateOfTravel.trim()) errors.dateOfTravel = "Travel date is required.";
-    if (!ticketDetails.passengerName.trim()) errors.passengerName = "Passenger name is required.";
-    if (!ticketDetails.email.trim()) {
-      errors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(ticketDetails.email)) {
-      errors.email = "Enter a valid email address.";
-    }
-    if (!ticketDetails.phoneNumber.trim()) {
-      errors.phoneNumber = "Phone number is required.";
-    } else if (!/^\d{10,15}$/.test(ticketDetails.phoneNumber)) {
-      errors.phoneNumber = "Enter a valid phone number (10-15 digits).";
-    }
-    if (ticketDetails.numberOfTickets <= 0) {
-      errors.numberOfTickets = "Number of tickets must be at least 1.";
-    }
+    if (!ticketDetails.busId.trim()) errors.busId = "Bus ID is required.";
+    if (!ticketDetails.seatNumber.trim()) errors.seatNumber = "Seat Number is required.";
+
     return errors;
   };
 
@@ -53,7 +37,7 @@ const BookTicket = () => {
     setError("");
     try {
       await axios.post(
-        `${BASE_URL}/tickets/book`,
+        `${BASE_URL}/passenger/book-ticket`,
         ticketDetails,
         {
           headers: {
@@ -66,11 +50,7 @@ const BookTicket = () => {
       // Clear the form after success
       setTicketDetails({
         routeId: "",
-        dateOfTravel: "",
-        numberOfTickets: 1,
-        passengerName: "",
-        email: "",
-        phoneNumber: "",
+        seatNumber: ""
       });
     } catch (error) {
       if (error.response?.status === 401) {
@@ -108,35 +88,23 @@ const BookTicket = () => {
 
         <form className={Styles.form}>
           <div>
-            <label>Route ID</label>
-            <input
-              type="text"
-              name="routeId"
-              value={ticketDetails.routeId}
-              onChange={handleChange}
-              aria-label="Route ID"
-            />
-            {validationErrors.routeId && (
-              <p className={Styles.error}>{validationErrors.routeId}</p>
-            )}
-
-            <label>Date of Travel</label>
-            <input
-              type="date"
-              name="dateOfTravel"
-              value={ticketDetails.dateOfTravel}
-              onChange={handleChange}
-              aria-label="Date of Travel"
-            />
-            {validationErrors.dateOfTravel && (
-              <p className={Styles.error}>{validationErrors.dateOfTravel}</p>
-            )}
-
-            <label>Number of Tickets</label>
+            <label>Bus ID</label>
             <input
               type="number"
-              name="numberOfTickets"
-              value={ticketDetails.numberOfTickets}
+              name="busId"
+              value={ticketDetails.busId}
+              onChange={handleChange}
+              aria-label="Bus ID"
+            />
+            {validationErrors.busId && (
+              <p className={Styles.error}>{validationErrors.busId}</p>
+            )}
+
+            <label>Seat Number</label>
+            <input
+              type="number"
+              name="seatNumber"
+              value={ticketDetails.seatNumber}
               onChange={handleChange}
               min="1"
               aria-label="Number of Tickets"
@@ -145,41 +113,6 @@ const BookTicket = () => {
               <p className={Styles.error}>{validationErrors.numberOfTickets}</p>
             )}
 
-            <label>Passenger Name</label>
-            <input
-              type="text"
-              name="passengerName"
-              value={ticketDetails.passengerName}
-              onChange={handleChange}
-              aria-label="Passenger Name"
-            />
-            {validationErrors.passengerName && (
-              <p className={Styles.error}>{validationErrors.passengerName}</p>
-            )}
-
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={ticketDetails.email}
-              onChange={handleChange}
-              aria-label="Email"
-            />
-            {validationErrors.email && (
-              <p className={Styles.error}>{validationErrors.email}</p>
-            )}
-
-            <label>Phone Number</label>
-            <input
-              type="text"
-              name="phoneNumber"
-              value={ticketDetails.phoneNumber}
-              onChange={handleChange}
-              aria-label="Phone Number"
-            />
-            {validationErrors.phoneNumber && (
-              <p className={Styles.error}>{validationErrors.phoneNumber}</p>
-            )}
           </div>
         </form>
 

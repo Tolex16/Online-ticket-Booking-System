@@ -10,8 +10,10 @@ import isAuthenticated from './Components/Authentication/IsAuthenticated';
 import BookTicket from './Pages/BookingTicket/BookTicket'
 import AllBuses from './Pages/AllBuses/BusList';
 import PassengerTickets from './Pages/BookingTicket/TicketList';
-import OperatorSignIn from './Pages/OperatorSignIn/OperatorSignIn';
 import OperatorSignUp from './Pages/OperatorSignUp/OperatorSignUp';
+import AdminUpdateRoutes from './Pages/AdminRoute/AdminUpdateRoutes.';
+import OperatorsByRoute from './Pages/AllBuses/OperatorByRoute';
+import SearchRoutes from './Pages/Routes Search/SearchRoutes';
 
 
 function App() {
@@ -22,18 +24,18 @@ function App() {
       <AnimatePresence>
             <Routes location={location} key={location.pathname}>
                 <Route path="/register-passenger" element={<SignUp />} />
-                <Route path="/login-passenger" element={<SignIn />} />
-                <Route path="/register-operator" element={<OperatorSignUp />} />
-                <Route path="/login-operator" element={<OperatorSignIn />} />
+                <Route path="/login" element={<SignIn />} />
+                <Route path="/register-operator" element={<OperatorSignUp />} />``
                 <Route path="/" element={<Home />} />
-                {/* <Route path="/Order" element={<Order />} /> */}
+                <Route path="/operator-route" element={<OperatorsByRoute />} />
+                <Route path="/search-route" element={<SearchRoutes />} />
                 <Route path="/contactus" element={<ContactUs/>} />
                 <Route path="/about" element={<About/> } /> 
                 <Route path="/book-ticket" element={<BookTicket/> } />
-                <Route path="/admin/manage-routes" element={<AdminManageRoutes />} />
+                <Route path="/admin/create-routes" element={<AdminManageRoutes />} />
                 <Route path="/buses" element={<AllBuses />} />
                 <Route path="/tickets" element={<PassengerTickets />} />
-
+                <Route path="/admin/update-route" element={<AdminUpdateRoutes />} />
             {/* Render the Wishlist route only if the user is authenticated */}
                  {!isAuthenticated ? (
             <>
