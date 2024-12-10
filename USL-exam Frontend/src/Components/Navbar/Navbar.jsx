@@ -3,8 +3,7 @@ import Style from './Navbar.module.css'
 import logo from "../../Assets/logo.png"
 import IconButton from '@mui/material/IconButton';
 import { ListRounded, Menu } from '@mui/icons-material';
-import SearchIcon from "@mui/icons-material/Search"
-import { useState} from 'react';
+import React, { useState, useEffect } from "react";
 import { LogoutOutlined } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
 import axios from 'axios';
@@ -19,7 +18,12 @@ const Navbar = () => {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // Set true if token exists
+  }, []);
 
   const onClose = () => setIsModalOpen(false);
 
@@ -29,11 +33,6 @@ const Navbar = () => {
     
   };
 
-  const search = (e) => {
-    e.preventDefault();
-    isAuthenticated() ? handleSearch() : setIsModalOpen(true);
-  }
-
   const tickets= (e) => {
     e.preventDefault();
     isAuthenticated() ? handleTicketList() : setIsModalOpen(true);
@@ -42,16 +41,30 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post(`${BASE_URL}/users/logout`, { credentials: 'include' });
-      response.ok ? navigate('/') : console.error('Logout failed:', response.statusText);
-    } catch (error) {
-      toast.error('Error logging out:', error);
-    }
-  };
+        // Send logout request to the server
+        const response = await axios.post(`${BASE_URL}/users/logout`, {}, {
+            withCredentials: true, // Include credentials (e.g., cookies)
+        });
 
-  const handleTicket = () => navigate("/book-ticket");
+        if (response.status === 200) {
+            // Clear tokens from localStorage
+            localStorage.removeItem("token");
+            localStorage.removeItem("refreshToken");
+
+            toast.success("Logged out successfully")
+            // Redirect to login page
+            window.location.href = "/";
+        } else {
+            console.error("Logout failed:", response.statusText);
+        }
+    } catch (error) {
+        console.error("Error logging out:", error);
+    }
+};
+
+
+  const handleTicket = () => navigate("/search-route");
   const toggleMenu = () => setIsOpen(!isOpen);
-  const handleSearch = () => navigate("/search-route");
   const handleTicketList = () => navigate("/my-tickets");
 
   const navLinks = [
@@ -84,17 +97,14 @@ const Navbar = () => {
                 <RiTicket2Fill style={{ color: "black" }} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Search">
-              <SearchIcon onClick={search} sx={{ marginRight: "20px", cursor: "pointer", color: "black" }} />
-            </Tooltip>
             <Tooltip title="My Tickets">
               <ListRounded onClick={tickets} sx={{ marginRight: "20px", cursor: "pointer", color: "black" }} />
             </Tooltip>
 
 
-          {location.pathname === '/Home' && (
+          {isLoggedIn && location.pathname === '/' && (
             <Tooltip title="Logout">
-              <LogoutOutlined onClick={handleLogout} className={Style.logout} />
+              <LogoutOutlined onClick={handleLogout} className={Style.logout}  />
             </Tooltip>
           )}
 

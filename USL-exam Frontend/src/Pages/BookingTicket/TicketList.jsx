@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../config";
 import Styles from "./PassengerTickets.module.css";
+import { toast } from "react-toastify";
 
 const PassengerTickets = () => {
   const [tickets, setTickets] = useState([]);
@@ -28,12 +29,17 @@ const PassengerTickets = () => {
 
       // Cancel a ticket
       const cancelTicket = (id) => {
-        axios.delete(`/passenger/cancel-ticket/${id}`)
-            .then(() => {
+        axios.delete(`${BASE_URL}/passenger/cancel-ticket/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then(() => {
                 setTickets(tickets.filter(ticket => ticket.id !== id));
-                alert('Ticket canceled successfully.');
-            })
-            .catch(err => alert('Failed to cancel ticket. Please try again.'));
+                alert('Ticket cancelled successfully.');
+                toast.success('Ticket cancelled successfully.');
+        })
+        .catch(err => alert('Failed to cancel ticket. Please try again.'));
     };
 
   return (

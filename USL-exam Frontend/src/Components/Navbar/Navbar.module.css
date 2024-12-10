@@ -113,8 +113,7 @@ img{
     cursor: pointer;
     top: 20px;
     object-fit:contain; 
-    margin-right: 50px;
-    margin-left: -20px;
+    margin-right: 40px;
     color: black;
     font-family: Poppins, sans-serif;
   }

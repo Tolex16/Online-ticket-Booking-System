@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Style from "./SignUp.module.css";
 import { useState } from "react";
 import register from "../../Assets/register.jpg"
-import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -86,7 +85,7 @@ const validateFields = () => {
       });
 
       if (response.status === 200) {
-        toast.success('Registration Successful, proceed for verification');
+        toast.success('Registration successful');
         navigate('/login');
       } else {
         throw new Error('Registration failed');
@@ -95,10 +94,10 @@ const validateFields = () => {
       if (err.response?.status === 400) {
         console.error('Error during registration:', err);
         toast.error("User already exists or invalid data.");
-        setError("User already exists or invalid data.");
+        setError("");
       } else {
         toast.error("Failed to sign up. Please try again later.");
-        setError("Unexpected error occurred. Please try again.");
+        setError("");
       }
     } finally {
       setIsLoading(false);
@@ -182,7 +181,6 @@ const validateFields = () => {
   
   return (   
   <>
-  <Navbar/>
   <div className={Style.container}>
       <div className={Style.form}>
         <form onSubmit={handleSignUp}>
@@ -221,11 +219,11 @@ const validateFields = () => {
           {passwordMatchError && <p className={Style.error}>{passwordMatchError}</p>}
           <button className={Style.register} disabled={isLoading} type="submit"> {isLoading ? "Signing Up...." : "Sign Up"} </button>
           {error && <p className={Style.error}>{error}</p>}
-          <p style={{marginLeft:'20px', marginTop:'25px'}}>Already have an account? <Link to="/login-passenger">Log In</Link></p>
+          <p style={{marginLeft:'45px', marginTop:'25px'}}>Already have an account? <Link to="/login">Log In</Link></p>
         </form>
       </div>
       <div className={Style.imageContainer}>
-        <img className={Style.image} src={register} alt="user" />
+        <img className={Style.image} src={register} alt="Passengers boarding a bus" />
       </div>
     </div>
     <Footer/> 

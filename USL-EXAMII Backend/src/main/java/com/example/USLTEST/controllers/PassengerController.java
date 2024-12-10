@@ -87,14 +87,14 @@ public class PassengerController {
         Iterable<OperatorList> allOperators = operatorMapper.mapListTo(operators);
         return ResponseEntity.ok(allOperators);
     }
-    @GetMapping("/get-operators-route")
-    public ResponseEntity<Iterable<OperatorList>> getAllOperatorsByRoute(Long routeId) {
+    @GetMapping("/get-operators-route/{routeId}")
+    public ResponseEntity<Iterable<OperatorList>> getAllOperatorsByRoute((@PathVariable Long routeId) {
         Iterable<BusEntity> operators = busService.getOperatorsByRoute(routeId);
         Iterable<OperatorList> allOperatorsByRoute = operatorMapper.mapListTo(operators);
         return ResponseEntity.ok(allOperatorsByRoute);
     }
-    @GetMapping("/all-buses-route/routeId")
-    public ResponseEntity<List<BusDto>> getAllBusesByRoute(Long routeId) {
+    @GetMapping("/all-buses-route/{routeId}")
+    public ResponseEntity<List<BusDto>> getAllBusesByRoute((@PathVariable Long routeId) {
         return busService.getBusesByRouteId(routeId);
     }
 

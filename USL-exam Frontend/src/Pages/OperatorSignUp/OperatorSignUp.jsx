@@ -16,7 +16,7 @@ const OperatorSignUp = () => {
   const [validationErrors, setValidationErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const [user , setUser] = useState
+  const [bus , setBus] = useState
   ({driverName:'',
     busNumber:'',
     busModel:'',
@@ -26,9 +26,9 @@ const OperatorSignUp = () => {
 
 const validateFields = () => {
       const errors = {};
-      if (!user.driverName.trim()) errors.driverName = "Driver Name is required.";
+      if (!bus.driverName.trim()) errors.driverName = "Driver Name is required.";
       
-      if (!user.phoneNumber.trim()) errors.phoneNumber = "Phone Number is required.";
+      if (!bus.phoneNumber.trim()) errors.phoneNumber = "Phone Number is required.";
    
       return errors;
 };
@@ -41,7 +41,7 @@ const validateFields = () => {
     if (Object.keys(errors).length > 0) return;
 
       const response = await
-        axios.post(`${BASE_URL}/admin/create-bus`, user,
+        axios.post(`${BASE_URL}/admin/create-bus`, bus,
         {
         headers:{
           'Content-Type': 'application/json',
@@ -58,10 +58,10 @@ const validateFields = () => {
       if (err.response?.status === 400) {
         console.error('Error during registration:', err);
         toast.error("Operator already exists or invalid data.");
-        setError("Operator already exists or invalid data.");
+        setError("");
       } else {
         toast.error("Failed to sign up. Please try again later.");
-        setError("Unexpected error occurred. Please try again.");
+        setError("");
       }
     } finally {
       setIsLoading(false);
@@ -70,7 +70,7 @@ const validateFields = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser(prevUser => ({ ...prevUser, [name]: value }));
+    setBus(prevUser => ({ ...prevUser, [name]: value }));
     setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
@@ -86,24 +86,26 @@ const validateFields = () => {
           {validationErrors.driverName && (
           <p className={Style.error}>{validationErrors.firstName}</p>
         )}
-          <input type="text" name="driverName" value={user.driverName} onChange={handleChange} placeholder="Enter your First name" required />
+          <input type="text" name="driverName" value={bus.driverName} onChange={handleChange} placeholder="Enter your First name" required />
           <label>Bus Number:</label>
-          <input type="number" name="busNumber" value={user.busNumber} onChange={handleChange} placeholder="Enter your Bus Number" required/>
+          <input type="number" name="busNumber" value={bus.busNumber} onChange={handleChange} placeholder="Enter your Bus Number" required/>
 
           <label>Phone number:</label>
-          <input type="text" name="phoneNumber" value={user.phoneNumber} onChange={handleChange} placeholder="Enter your phone no" required/>
+          <input type="text" name="phoneNumber" value={bus.phoneNumber} onChange={handleChange} placeholder="Enter your phone no" required/>
           {validationErrors.phoneNumber && (
           <p className={Style.error}>{validationErrors.phoneNumber}</p>
         )}
           <label>Bus Model:</label>
-          <input type="text" name="busModel" value={user.busModel} onChange={handleChange} placeholder="Enter your bus model" required/>
+          <input type="text" name="busModel" value={bus.busModel} onChange={handleChange} placeholder="Enter your bus model" required/>
        
           <label>Capacity:</label>
-          <input type="number" name="capacity" value={user.capacity} onChange={handleChange} placeholder="Enter your capacity" required/>
+          <input type="number" name="capacity" value={bus.capacity} onChange={handleChange} placeholder="Enter your capacity" required/>
+          <button className={Style.register} disabled={isLoading} type="submit"> {isLoading ? "Signing Up...." : "Sign Up"} </button>
+          {error && <p className={Style.error}>{error}</p>}
         </form>
       </div>
       <div className={Style.imageContainer}>
-        <img className={Style.image} src={register} alt="user" />
+        <img className={Style.image} src={register} alt="Passengers boarding a bus" />
       </div>
     </div>
     <Footer/> 

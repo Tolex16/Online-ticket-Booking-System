@@ -6,7 +6,6 @@ import About from './Pages/About/About';
 import ContactUs from './Pages/ContactUs/ContactUs';
 import { AnimatePresence } from 'framer-motion';
 import AdminManageRoutes from './Pages/AdminRoute/AdminManageRoutes';
-import isAuthenticated from './Components/Authentication/IsAuthenticated';
 import BookTicket from './Pages/BookingTicket/BookTicket'
 import AllBuses from './Pages/AllBuses/BusList';
 import PassengerTickets from './Pages/BookingTicket/TicketList';
@@ -15,6 +14,7 @@ import AdminUpdateRoutes from './Pages/AdminRoute/AdminUpdateRoutes.';
 import OperatorsByRoute from './Pages/AllBuses/OperatorByRoute';
 import SearchRoutes from './Pages/Routes Search/SearchRoutes';
 import RoutesList from './Pages/Routes Search/RoutesList';
+import PrivateRoute from './Components/Authentication/PrivateRoute';
 
 
 function App() {
@@ -26,33 +26,18 @@ function App() {
             <Routes location={location} key={location.pathname}>
                 <Route path="/register-passenger" element={<SignUp />} />
                 <Route path="/login" element={<SignIn />} />
-                <Route path="/register-operator" element={<OperatorSignUp />} />``
+                <Route path="/admin/register-operator" element={<PrivateRoute element={OperatorSignUp} />} />
                 <Route path="/" element={<Home />} />
-                <Route path="/operator-route" element={<OperatorsByRoute />} />
-                <Route path="/search-route" element={<SearchRoutes />} />
+                <Route path="/operator-route" element={<PrivateRoute element={OperatorsByRoute} />} />
+                <Route path="/search-route" element={<PrivateRoute element={SearchRoutes} />} />
                 <Route path="/contactus" element={<ContactUs/>} />
                 <Route path="/about" element={<About/> } /> 
-                <Route path="/book-ticket" element={<BookTicket/> } />
-                <Route path="/admin/create-routes" element={<AdminManageRoutes />} />
-                <Route path="/all-buses" element={<AllBuses />} />
-                <Route path="/all-routes" element={<RoutesList />} />
-                <Route path="/my-tickets" element={<PassengerTickets />} />
-                <Route path="/admin/update-route" element={<AdminUpdateRoutes />} />
-            {/* Render the Wishlist route only if the user is authenticated */}
-                 {!isAuthenticated ? (
-            <>
-              
-            </>
-          ) : null}
-       
-       {/* Render the Wishlist route only if the user is authenticated */}
-       {/* <Route path="/wishlist" element={<Wishlist /> } />
-        <Route path="/cart" element={ <Cart /> } />
-        <Route path="/Order" element={<Order /> } /> */}
-
-       {/* <Route path="/wishlist" element={<Wishlist handleOpenModal={handleOpenModal} />} />
-       <Route path="/cart" element={<Cart handleOpenModal={handleOpenModal} />} /> */}
-       {/* {isModalOpen && <LoginModal onClose={handleCloseModal} />} */}
+                <Route path="/book-ticket/:routeId" element={<PrivateRoute element={BookTicket} />} />
+                <Route path="/admin/create-routes" element={<PrivateRoute element={AdminManageRoutes} />} />
+                <Route path="/all-buses" element={<PrivateRoute element={AllBuses} />} />
+                <Route path="/all-routes" element={<PrivateRoute element={RoutesList} />} />
+                <Route path="/my-tickets" element={<PrivateRoute element={PassengerTickets} />} />
+                <Route path="/admin/update-route" element={<PrivateRoute element={AdminUpdateRoutes} />} />
        </Routes>
         </AnimatePresence>
 

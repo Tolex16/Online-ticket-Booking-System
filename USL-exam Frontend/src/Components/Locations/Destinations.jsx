@@ -13,51 +13,50 @@ const ShoppingGrid = () =>{
         <>
         <div className={Style.shopping}>
         <div className={Style.box}>
-        {/* <Link key={product.id} to={`/product/${product.id}`} className={Style.box}> */}
         <div className={Style.boximg}>
-            <img src={Abuja} alt="user" />
+            <img src={Abuja} alt="Abuja" />
             </div>
             <p>ABUJA</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={AkwaIbom} alt="user" />
+            <img src={AkwaIbom} alt="Akwa Ibom" />
             </div>
             <p>AKWA IBOM</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={CrossRivers} alt="user" />
+            <img src={CrossRivers} alt="Cross Rivers" />
             </div>
             <p>CROSS RIVERS</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={Kaduna} alt="user" />
+            <img src={Kaduna} alt="Kaduna" />
             </div>
             <p>KADUNA</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={Kano} alt="user" />
+            <img src={Kano} alt="Kano" />
             </div>
             <p>KANO</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={Lagos} alt="user" />
+            <img src={Lagos} alt="Lagos" />
             </div>
             <p>LAGOS</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={Rivers} alt="user" />
+            <img src={Rivers} alt="Rivers" />
             </div>
             <p>RIVERS</p>
         </div>
         <div className={Style.box}>
         <div className={Style.boximg}>
-            <img src={Enugu} alt="user" />
+            <img src={Enugu} alt="Enugu" />
             </div>
             <p>ENUGU</p>
         </div>

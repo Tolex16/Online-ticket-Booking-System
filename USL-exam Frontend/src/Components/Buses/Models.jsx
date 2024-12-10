@@ -13,31 +13,31 @@ function HarderThanU() {
         <div className={Style.shopping}>
       <div className={Style.box}>
                 <div className={Style.boximg}>
-                    <img src={NewRealease6} alt="user" />
+                    <img src={NewRealease6} alt="Higer" />
                 </div>
                 <p>HIGER</p>
             </div>
             <div className={Style.box}>
                 <div className={Style.boximg}>
-                    <img src={NewRealease7} alt="user" />
+                    <img src={NewRealease7} alt="Honda" />
                 </div>
                 <p>HONDA</p>
             </div>
             <div className={Style.box}>
                 <div className={Style.boximg}>
-                    <img src={NewRealease8} alt="user" />
+                    <img src={NewRealease8} alt="Kia" />
                 </div>
                 <p>KIA</p>
             </div>
             <div className={Style.box}>
                 <div className={Style.boximg}>
-                    <img src={NewRealease9} alt="user" />
+                    <img src={NewRealease9} alt="Benz" />
                 </div>
                 <p>BENZ</p>
             </div>
             <div className={Style.box}>
                 <div className={Style.boximg}>
-                    <img src={NewRealease10} alt="user" />
+                    <img src={NewRealease10} alt="Toyota" />
                 </div>
                 <p>TOYOTA</p>
             </div>

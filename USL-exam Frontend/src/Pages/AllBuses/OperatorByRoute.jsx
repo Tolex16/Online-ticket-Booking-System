@@ -6,10 +6,22 @@ const OperatorsByRoute = ({ routeId }) => {
     const [operators, setOperators] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/passenger/all-buses-route/${routeId}`)
-            .then(response => setOperators(response.data))
-            .catch(err => console.error(err));
-    }, [routeId]);
+        const fetchOperators = async () => {
+            try {
+                const token = localStorage.getItem("token"); // Get the token from localStorage
+                const response = await axios.get(`${BASE_URL}/passenger/all-buses-route/${routeId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Add the Authorization header
+                    },
+                });
+                setOperators(response.data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        fetchOperators();
+    }, [routeId]); // Re-run when routeId changes
 
     return (
         <div>

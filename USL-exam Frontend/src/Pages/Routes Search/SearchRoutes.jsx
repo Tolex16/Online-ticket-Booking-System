@@ -4,17 +4,35 @@ import Style from "./SearchRoutes.module.css";
 import { BASE_URL } from "../../config";
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const SearchRoutes = () => {
     const [origin, setOrigin] = useState('');
     const [destination, setDestination] = useState('');
     const [routes, setRoutes] = useState([]);
+    const navigate = useNavigate();
 
-    const searchRoutes = () => {
-        axios.get(`${BASE_URL}/passenger/routes/search?origin=${origin}&destination=${destination}`)
-            .then(response => setRoutes(response.data))
-            .catch(err => console.error(err));
+    const searchRoutes = async () => {
+        const token = localStorage.getItem("token");
+    
+        if (!token) {
+            console.error("No token found. Please log in.");
+            return;
+        }
+    
+        axios.get(`${BASE_URL}/passenger/routes/search?origin=${origin}&destination=${destination}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then(response => setRoutes(response.data))
+        .catch(err => console.error(err));
     };
+    
+    const handleSelectRoute = (routeId) => {
+        navigate(`/book-ticket/${routeId}`);
+      };
+    
 
     return (
         <>
@@ -34,18 +52,26 @@ const SearchRoutes = () => {
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
             />
-            <button  className={Style.send} onClick={searchRoutes}>Search</button>
+            <button className={Style.send} onClick={searchRoutes}>Search</button>
+            </div>
 
+            {routes.length > 0 && (     
+        <div>
+            <h3>Available Routes</h3>
             <ul>
                 {routes.map(route => (
                     <li key={route.routeId}>
-                        <p><strong>Route:</strong> {route.origin} to {route.destination}</p>
+                        <p><strong>Route:</strong>{route.origin} → {route.destination} ({route.departureDate})</p>
                         <p><strong>Price:</strong> ₦{route.price}</p>
                         <p><strong>Duration:</strong> {route.duration}</p>
+                        <button className={Style.send} onClick={() => handleSelectRoute(route.routeId)}>
+                  Select Route
+                </button>
                     </li>
                 ))}
             </ul>
         </div>
+        )}
         <Footer/>
         </>
     );

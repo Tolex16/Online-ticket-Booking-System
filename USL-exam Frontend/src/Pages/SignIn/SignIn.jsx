@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Style from "./Signin.module.css";
 import buses from "../../Assets/register.jpg";
-import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
@@ -81,7 +80,7 @@ const SignIn = () => {
           position: "top-right",
         });
       } else {
-        setError("An error occurred while signing in");
+        setError("");
         toast.error("An unexpected error occurred", {
           position: "top-right",
         });
@@ -101,7 +100,6 @@ const SignIn = () => {
 
   return (
     <>
-      <Navbar />
       <div className={Style.container}>
     <div className={Style.form}>
     <form onSubmit={handleSignIn}>
@@ -160,7 +158,7 @@ const SignIn = () => {
           </button>
         </div>
         <div className={Style.VideoContainer}>
-        <img className={Style.image} src={buses} alt="user" />
+        <img className={Style.image} src={buses} alt="Passengers boarding a bus" />
         </div>
       </div>
       <Footer />

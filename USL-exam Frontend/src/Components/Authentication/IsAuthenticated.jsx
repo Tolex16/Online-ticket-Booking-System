@@ -8,15 +8,11 @@ const getToken = () => {
 // Function to check if a JWT token is expired
 const isTokenExpired = (token) => {
   try {
-    const decoded = jwtDecode(token); // Ensure that 'decode' is imported
-    if (decoded.exp < Date.now() / 1000) {
-      // Token is expired
-      return true;
-    } else {
-      return false;
-    }
+    const decoded = jwtDecode(token); // Decode the token to retrieve payload
+    // Check if the expiration time is less than the current time
+    return decoded.exp < Date.now() / 1000; 
   } catch (err) {
-    // Failed to decode token
+    // If decoding fails, consider the token invalid
     return true;
   }
 };

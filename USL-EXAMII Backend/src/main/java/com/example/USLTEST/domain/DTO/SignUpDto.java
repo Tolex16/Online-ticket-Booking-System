@@ -18,6 +18,7 @@ public class SignUpDto {
 
     private String userName;
     @Email(message = "Input a valid email address")
+
     private String email;
 
     private String password;
