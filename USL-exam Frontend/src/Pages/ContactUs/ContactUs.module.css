@@ -30,11 +30,43 @@
     display: flex;
     margin-left: 100px;
     width: 100%;
-    
+    margin-top: 30px;
     font-family: Poppins, sans-serif;
 }
-input{
-  color: black;
+.formContact {
+  width: 450px;
+  padding: 40px;
+  border-radius: 10px;
+  font-family: Poppins, sans-serif;
+  background-color: none;
+  margin-top: 20px;
+}
+
+.formContact h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Poppins, sans-serif;
+  color:cornflowerblue;
+}
+.form h4 {
+  text-align: center;
+  font-family: Poppins, sans-serif;
+
+}
+.formContact label {
+  display: block;
+  font-family: Poppins, sans-serif;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-right: -1px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Poppins, sans-serif;
 }
 .form textarea{
     padding-bottom: 60px;
@@ -53,6 +85,10 @@ textarea:focus {
 .hear h1{
     margin-left: 20px;
     text-align: center;
+}
+.hear p{
+  margin-left: 20px;
+  text-align: center;
 }
 .send{
     border:none;
@@ -89,7 +125,7 @@ textarea:focus {
       cursor: not-allowed;
     }
 .touch{
-    margin-left: 130px;
+    margin-left: 230px;
     padding-left: 200px;
 }
 button:hover {
@@ -112,6 +148,43 @@ button:hover {
     .form {
       display: flex;
       margin-left: 50px;
+    }  
+    .formContact {
+      width: 450px;
+      padding: 40px;
+      border-radius: 10px;
+      font-family: Poppins, sans-serif;
+      background-color: #f5f5f5;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-left: 160px;
+      margin-top: 20px;
+    }
+    
+    .formContact h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: Poppins, sans-serif;
+      color:cornflowerblue;
+    }
+    .form h4 {
+      text-align: center;
+      font-family: Poppins, sans-serif;
+  
+    }
+    .formContact label {
+      display: block;
+      font-family: Poppins, sans-serif;
+      margin-bottom: 10px;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-right: -1px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: Poppins, sans-serif;
     }
   
     .form textarea {

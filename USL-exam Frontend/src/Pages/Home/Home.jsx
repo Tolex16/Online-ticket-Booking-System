@@ -6,8 +6,14 @@ import Destinations from '../../Components/Locations/Destinations';
 import Footer from '../../Components/Footer/Footer';
 import BusCarousel from '../../Components/Buses/BusCarousel';
 import { motion } from 'framer-motion';
+import { useNavigate} from "react-router-dom";
+
 
 const Home = () => {
+  const navigate = useNavigate();
+    
+const handleAllRoutes = () => navigate("/all-routes");
+const handleAllBuses = () => navigate("/all-buses");
 
   return(
     <motion.div
@@ -23,13 +29,18 @@ const Home = () => {
         <p className={Style.paragraph}> Transverse scenic routes</p>
 
         <Destinations/>
-
+        <button className={Style.createaccount} onClick={handleAllRoutes}>View All Routes</button>
         <br/>
         <br/>
         <br/>
 
         <h2 className={Style.heading}> Our Buses </h2>
+        
         <BusCarousel/>
+        <br />
+        <br />
+        <br />
+        <button className={Style.createaccount} onClick={handleAllBuses}>View More</button>
         <br/>
         <br/>
         <br/>

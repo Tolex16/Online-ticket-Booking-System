@@ -3,7 +3,6 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import Styles from './AdminManageRoutes.module.css';
 import { useNavigate } from 'react-router-dom';
-import { AddSharp } from '@mui/icons-material';
 import axios from 'axios';
 import { BASE_URL } from '../../config';
 
@@ -24,7 +23,7 @@ function AdminUpdateRoutes() {
     e.preventDefault();
     try {
 
-      const response = await axios.post(`${BASE_URL}/admin/update-route/${routeDetails.routeId}`, routeDetails, {
+      const response = await axios.put(`${BASE_URL}/admin/update-route/${routeDetails.routeId}`, routeDetails, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json",
@@ -34,7 +33,7 @@ function AdminUpdateRoutes() {
       if (response.status === 201) {
         navigate('/');
       } else {
-        setError('Failed to create or update route. Please try again.');
+        setError('Failed to update route. Please try again.');
       }
     } catch (err) {
       setError('Error occurred while processing your request.');
@@ -85,13 +84,13 @@ function AdminUpdateRoutes() {
             required
           />
 
-          <label>Departure Day:</label>
+          <label>Departure Date:</label>
           <input
-            type="text"
-            name="departureDay"
+            type="date"
+            name="departureDate"
             value={routeDetails.departureDate}
             onChange={handleChange}
-            placeholder="Enter Departure Day"
+            placeholder="Enter Departure Date"
             required
           />
 
@@ -120,12 +119,12 @@ function AdminUpdateRoutes() {
             name= "price"
             value={routeDetails.contact}
             onChange={handleChange}
-            placeholder="Enter Operator Contact"
+            placeholder="Enter Price"
             required
           />
 
           <button className={Styles.submit} type="submit">
-            Update Route<AddSharp />
+            Update Route
           </button>
 
           {error && <p className={Styles.error}>{error}</p>}

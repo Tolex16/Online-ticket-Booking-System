@@ -14,6 +14,7 @@ import OperatorSignUp from './Pages/OperatorSignUp/OperatorSignUp';
 import AdminUpdateRoutes from './Pages/AdminRoute/AdminUpdateRoutes.';
 import OperatorsByRoute from './Pages/AllBuses/OperatorByRoute';
 import SearchRoutes from './Pages/Routes Search/SearchRoutes';
+import RoutesList from './Pages/Routes Search/RoutesList';
 
 
 function App() {
@@ -33,8 +34,9 @@ function App() {
                 <Route path="/about" element={<About/> } /> 
                 <Route path="/book-ticket" element={<BookTicket/> } />
                 <Route path="/admin/create-routes" element={<AdminManageRoutes />} />
-                <Route path="/buses" element={<AllBuses />} />
-                <Route path="/tickets" element={<PassengerTickets />} />
+                <Route path="/all-buses" element={<AllBuses />} />
+                <Route path="/all-routes" element={<RoutesList />} />
+                <Route path="/my-tickets" element={<PassengerTickets />} />
                 <Route path="/admin/update-route" element={<AdminUpdateRoutes />} />
             {/* Render the Wishlist route only if the user is authenticated */}
                  {!isAuthenticated ? (

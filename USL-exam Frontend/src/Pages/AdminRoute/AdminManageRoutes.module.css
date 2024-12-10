@@ -1,43 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.create{
+.container{
+    max-width: 968px;
     margin: auto;
-    display: flex;
-    text-align: center;
+    justify-content: center;
+    margin-top: 2rem;
 }
-.submit{
-    border:rgb(22, 4, 4) solid 2px;
-    font-family: Poppins, sans-serif;
-    /* background: linear-gradient(to right, red, black); */
-    font-size: 21px;
-    /* background: black; */
-    cursor: pointer;
-    color:rgb(15, 5, 5);
-    display: flex;
-    padding: 8px;
+.form {
+    width: 450px;
+    padding: 40px;
     border-radius: 10px;
+    font-family: Poppins, sans-serif;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 160px;
     margin-top: 20px;
-    margin-left: 450px;
-}
-.upload{
-    display: inline-flex;
+  }
+  
+  .form h1 {
+    text-align: center;
+    margin-bottom: 20px;
     font-family: Poppins, sans-serif;
-    margin-left: 180px;
-}
-.butload{
-    margin-left: 5px;
-    border:rgb(22, 4, 4) solid 2px;
+    color:cornflowerblue;
+  }
+  .form h4 {
+    text-align: center;
     font-family: Poppins, sans-serif;
-    /* background: linear-gradient(to right, red, black); */
-    font-size: 21px;
-    /* background: black; */
+
+  }
+  .form label {
+    display: block;
+    font-family: Poppins, sans-serif;
+    margin-bottom: 10px;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 10px;
+    margin-right: -1px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Poppins, sans-serif;
+  }
+  .submit{
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer;
-    color:rgb(15, 5, 5);
-    border-radius: 10px;
-    padding: 5px;
-}
- button:hover {
-    background-color:#fd5852;
+    justify-self: center;
+    justify-content: center;
+    border-radius: 5px;
+     margin-left: 130px;
+  }
+  .submit:hover {
+    background-color: cornflowerblue;
+    color: white;
   }
   
 @media only screen and (max-width: 768px) {

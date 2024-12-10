@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { BASE_URL } from '../../config';
 import axios from 'axios';
 
-const ContactUs = ({ cartItems }) => {
+const ContactUs = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [isMessageSent, setIsMessageSent] = useState(false);
@@ -26,7 +26,7 @@ const ContactUs = ({ cartItems }) => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post(`${BASE_URL}/users/contactus`, contact, {
+      const response = await axios.post(`${BASE_URL}/passenger/contactus`, contact, {
         headers: { 'Content-Type': 'application/json' },
       });
 
@@ -54,7 +54,7 @@ const ContactUs = ({ cartItems }) => {
       animate={{ width: '100%' }}
       exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
     >
-      <Navbar cartItems={cartItems} />
+      <Navbar />
       <ContactHero />
 
       <div className={Style.hear}>
@@ -66,7 +66,7 @@ const ContactUs = ({ cartItems }) => {
       </div>
 
       <div className={Style.form}>
-        <form onSubmit={handleContactUs}>
+        <form className={Style.formContact} onSubmit={handleContactUs}>
           <label>Name</label>
           <input
             type="text"
@@ -77,7 +77,7 @@ const ContactUs = ({ cartItems }) => {
             aria-label="Name"
             className={Style.input}
           />
-
+          <br/>
           <label>Email</label>
           <input
             type="email"
@@ -88,9 +88,8 @@ const ContactUs = ({ cartItems }) => {
             aria-label="Email"
             className={Style.input}
           />
-
+          <br/>
           <label>Message</label>
-          <br />
           <textarea
             name="message"
             value={contact.message}

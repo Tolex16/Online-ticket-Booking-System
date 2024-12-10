@@ -6,7 +6,7 @@ const OperatorsByRoute = ({ routeId }) => {
     const [operators, setOperators] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/passenger/bus-route/${routeId}`)
+        axios.get(`${BASE_URL}/passenger/all-buses-route/${routeId}`)
             .then(response => setOperators(response.data))
             .catch(err => console.error(err));
     }, [routeId]);
@@ -17,7 +17,8 @@ const OperatorsByRoute = ({ routeId }) => {
             <ul>
                 {operators.map(operator => (
                     <li key={operator.operatorId}>
-                        <p><strong>Name:</strong> {operator.name}</p>
+                        <p><strong>Name:</strong> {operator.driverName}</p>
+                        <p><strong>Contact:</strong> {operator.phoneNumber}</p>
                         <p><strong>Seating Capacity:</strong> {operator.seating}</p>
                     </li>
                 ))}

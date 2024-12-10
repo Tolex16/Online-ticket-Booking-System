@@ -3,7 +3,6 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer';
 import Styles from './AdminManageRoutes.module.css';
 import { useNavigate } from 'react-router-dom';
-import { AddSharp } from '@mui/icons-material';
 import axios from 'axios';
 import { BASE_URL } from '../../config';
 
@@ -23,7 +22,7 @@ function AdminManageRoutes() {
     e.preventDefault();
     try {
 
-      const response = await axios.post(`${BASE_URL}/admin/routes/create`, routeDetails, {
+      const response = await axios.post(`${BASE_URL}/admin/create-route`, routeDetails, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         "Content-Type": "application/json",
@@ -33,7 +32,7 @@ function AdminManageRoutes() {
       if (response.status === 201) {
         navigate('/');
       } else {
-        setError('Failed to create or update route. Please try again.');
+        setError('Failed to create route. Please try again.');
       }
     } catch (err) {
       setError('Error occurred while processing your request.');
@@ -109,12 +108,12 @@ function AdminManageRoutes() {
             name= "price"
             value={routeDetails.contact}
             onChange={handleChange}
-            placeholder="Enter Operator Contact"
+            placeholder="Enter Price"
             required
           />
 
           <button className={Styles.submit} type="submit">
-            Submit <AddSharp />
+           Create Route
           </button>
 
           {error && <p className={Styles.error}>{error}</p>}

@@ -2,7 +2,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Style from './Navbar.module.css'
 import logo from "../../Assets/logo.png"
 import IconButton from '@mui/material/IconButton';
-import { Menu } from '@mui/icons-material';
+import { ListRounded, Menu } from '@mui/icons-material';
+import SearchIcon from "@mui/icons-material/Search"
 import { useState} from 'react';
 import { LogoutOutlined } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
@@ -28,6 +29,16 @@ const Navbar = () => {
     
   };
 
+  const search = (e) => {
+    e.preventDefault();
+    isAuthenticated() ? handleSearch() : setIsModalOpen(true);
+  }
+
+  const tickets= (e) => {
+    e.preventDefault();
+    isAuthenticated() ? handleTicketList() : setIsModalOpen(true);
+  }
+
 
   const handleLogout = async () => {
     try {
@@ -40,6 +51,8 @@ const Navbar = () => {
 
   const handleTicket = () => navigate("/book-ticket");
   const toggleMenu = () => setIsOpen(!isOpen);
+  const handleSearch = () => navigate("/search-route");
+  const handleTicketList = () => navigate("/my-tickets");
 
   const navLinks = [
     { path: "/", label: "HOME" },
@@ -67,10 +80,17 @@ const Navbar = () => {
         <span className={Style.icons}>
 
           <Tooltip title="Buy Ticket">
-            <IconButton onClick={popup} style={{ objectFit: "contain", paddingBottom: "20px", width: "30px", height: "25px", margin: "15px 10px" }} aria-label="Ticket">
+            <IconButton onClick={popup} style={{ objectFit: "contain", paddingBottom: "20px", width: "32px", height: "25px", margin: "15px 10px" }} aria-label="Ticket">
                 <RiTicket2Fill style={{ color: "black" }} />
             </IconButton>
           </Tooltip>
+          <Tooltip title="Search">
+              <SearchIcon onClick={search} sx={{ marginRight: "20px", cursor: "pointer", color: "black" }} />
+            </Tooltip>
+            <Tooltip title="My Tickets">
+              <ListRounded onClick={tickets} sx={{ marginRight: "20px", cursor: "pointer", color: "black" }} />
+            </Tooltip>
+
 
           {location.pathname === '/Home' && (
             <Tooltip title="Logout">

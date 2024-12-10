@@ -39,7 +39,7 @@ const AllBuses = () => {
               <p><strong>Route:</strong> {bus.origin} to {bus.destination}</p>
               <p><strong>Operator:</strong> {bus.driverName}</p>
               <p><strong>Contact:</strong> {bus.phoneNumber}</p>
-              <p><strong>Day of Operation:</strong> {bus.dayOfOperation}</p>
+              <p><strong>Departure Date:</strong> {bus.departureDate}</p>
               <p><strong>Capacity:</strong> {bus.capacity}</p>
             </div>
           ))}

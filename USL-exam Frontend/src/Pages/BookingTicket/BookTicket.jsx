@@ -82,13 +82,13 @@ const BookTicket = () => {
     <>
       <Navbar />
       <h1 className={Styles.title}>Book Your Ticket</h1>
-      <div className={`${Styles.container} ${Styles.formCenter}`}>
+      <div className={Styles.container}>
         {isLoading && <p>Booking your ticket, please wait...</p>}
         {error && <p className={Styles.error}>{error}</p>}
 
         <form className={Styles.form}>
           <div>
-            <label>Bus ID</label>
+            <label>Bus ID:</label>
             <input
               type="number"
               name="busId"
@@ -100,7 +100,7 @@ const BookTicket = () => {
               <p className={Styles.error}>{validationErrors.busId}</p>
             )}
 
-            <label>Seat Number</label>
+            <label>Seat Number:</label>
             <input
               type="number"
               name="seatNumber"

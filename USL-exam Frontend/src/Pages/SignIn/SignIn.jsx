@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const setToken = (token) => {
   localStorage.setItem("token", token);
 };
-
 const SignIn = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);

@@ -20,7 +20,7 @@ const Footer = () => {
     our platform is designed to make booking tickets seamless and hassle-free. 
     Join our community and explore a smarter way to travel.    
      </p>
-                    <p className={Style.options}><Phone/> +2349031640479</p>
+                    <p className={Style.options}><Phone/> +2349031650479</p>
                     <p className={Style.options}><Mail/>  support@fastticket.com</p>
         </div>
         <div className={Style.section}>

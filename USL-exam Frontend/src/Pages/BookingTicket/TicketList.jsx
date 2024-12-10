@@ -38,7 +38,7 @@ const PassengerTickets = () => {
 
   return (
     <div className={Styles.container}>
-      <h1>My Tickets</h1>
+      <h1 className={Styles.heading}>My Tickets</h1>
       {isLoading && <p>Loading tickets...</p>}
       {error && <p className={Styles.error}>{error}</p>}
       {!isLoading && !error && (

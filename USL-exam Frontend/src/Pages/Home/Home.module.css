@@ -11,7 +11,17 @@ color: #1D1D1D;
 justify-content: center;
 display: flex;
 }
-
+.createaccount {
+    background-color:  cornflowerblue;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 620px;
+    margin-top: 30px;
+    font-family: Poppins, sans-serif;
+  }
 .paragraph{
     color: #555555;
     font-family: Poppins, sans-serif;
