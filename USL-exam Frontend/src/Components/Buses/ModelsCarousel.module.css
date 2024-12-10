@@ -1,0 +1,20 @@
+.scroll{
+    transition: color 0.3s;
+}
+.scroll:hover {
+  background-color: red;
+}
+.next-button {
+  background-color: black;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: red;
+  transform: scale(1.1); /* Slight zoom for interactivity */
+}
+
+.next-button:active {
+  background-color: darkred; /* A darker shade on click */
+}

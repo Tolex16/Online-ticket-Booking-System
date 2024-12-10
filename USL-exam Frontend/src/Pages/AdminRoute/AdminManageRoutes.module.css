@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.create{
+    margin: auto;
+    display: flex;
+    text-align: center;
+}
+.submit{
+    border:rgb(22, 4, 4) solid 2px;
+    font-family: Poppins, sans-serif;
+    /* background: linear-gradient(to right, red, black); */
+    font-size: 21px;
+    /* background: black; */
+    cursor: pointer;
+    color:rgb(15, 5, 5);
+    display: flex;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 450px;
+}
+.upload{
+    display: inline-flex;
+    font-family: Poppins, sans-serif;
+    margin-left: 180px;
+}
+.butload{
+    margin-left: 5px;
+    border:rgb(22, 4, 4) solid 2px;
+    font-family: Poppins, sans-serif;
+    /* background: linear-gradient(to right, red, black); */
+    font-size: 21px;
+    /* background: black; */
+    cursor: pointer;
+    color:rgb(15, 5, 5);
+    border-radius: 10px;
+    padding: 5px;
+}
+ button:hover {
+    background-color:#fd5852;
+  }
+  
+@media only screen and (max-width: 768px) {
+    .submit {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .submit {
+        font-size: 18px;
+    }
+
+    .butload {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .submit {
+        font-size: 16px;
+    }
+
+    .butload {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .submit {
+        font-size: 14px;
+    }
+
+    .butload {
+        font-size: 14px;
+    }
+}

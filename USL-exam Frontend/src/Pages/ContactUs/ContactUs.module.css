@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.contactus{
+    position: relative; /* Enables positioning for the pseudo-element */
+    background-image: url(../../Assets/Hero2.jpg);
+    background-size: cover;
+    width: 95%;
+    height: 450px;
+    margin-left: 25px;
+    margin-top: 15px;
+    overflow: hidden; /* Ensures the overlay doesn’t exceed the container */
+}
+.contactus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1; /* Places it above the image */
+}  
+.contactContent{
+  margin-top: 150px;
+  text-align: center;
+  justify-content: center;
+  z-index: 2; /* Higher z-index than the overlay */
+}
+.form{
+    display: flex;
+    margin-left: 100px;
+    width: 100%;
+    
+    font-family: Poppins, sans-serif;
+}
+input{
+  color: black;
+}
+.form textarea{
+    padding-bottom: 60px;
+    padding-right: 70px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+}
+/* Hover and Focus effects */
+input:focus,
+textarea:focus {
+  border-color: cornflowerblue;
+}
+.hear{
+    margin-top: 50px;
+}
+.hear h1{
+    margin-left: 20px;
+    text-align: center;
+}
+.send{
+    border:none;
+    font-family: Poppins, sans-serif;
+    /* background: linear-gradient(to right, red, black); */
+    font-size: 21px;
+    background: black;
+    cursor: pointer;
+    color:white;
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-left: 90px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .error {
+      color: #fd5852;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    .success {
+      color: #28a745;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    button:disabled {
+      background-color: #fff;
+      cursor: not-allowed;
+    }
+.touch{
+    margin-left: 130px;
+    padding-left: 200px;
+}
+button:hover {
+    background-color:cornflowerblue;
+    box-shadow: 0 4px 10px rgba(253, 88, 82, 0.5);
+  }
+  @media only screen and (max-width: 480px) {
+    .contactus {
+      background-size: cover;
+      font-family: Poppins, sans-serif;
+      font-size: 27px;
+      font-weight: 500;
+      line-height: 48px;
+      letter-spacing: 0em;
+      color: rgb(238, 226, 226);
+      padding-top: 135px;
+      text-align: center;
+    }
+  
+    .form {
+      display: flex;
+      margin-left: 50px;
+    }
+  
+    .form textarea {
+      padding: 10px;
+      flex: 1;
+    }
+  
+    .hear {
+      margin-top: 50px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+  
+    .hear p {
+      text-align: center;
+      font-size: 14px;
+    }
+  
+    .hear h1 {
+      text-align: center;
+      font-size: 30px;
+    }
+  
+    .send {
+      border: rgb(22, 4, 4) solid 2px;
+      font-family: Lato;
+      font-size: 21px;
+      cursor: pointer;
+      color: rgb(15, 5, 5);
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 30px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .touch {
+      width: 100%;
+      margin-left:  -200px;
+      margin-right: 50px;
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (max-width: 430px) {
+    .contactus {
+      width: 387px;
+      padding-left: 30px;
+    }
+  
+    .form {
+      margin-left: 1px;
+    }
+  
+    .form textarea {
+      padding: 10px;
+      flex: 1;
+    }
+  
+    .hear h1 {
+      font-size: 20px;
+      text-align: left;
+    }
+  
+    .hear p {
+      margin-top: 10px;
+      font-size: 12.5px;
+      text-align: left;
+    }
+  
+    .send {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .touch {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  
+    .touch h1 {
+      font-size: 20px;
+    }
+  
+    .touch h6 {
+      margin-top: 10px;
+      font-size: 12.5px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .contactus {
+      width: 90%;
+      max-width: 100%;
+      height: auto;
+      padding: 20px;
+      padding-top: 100px; /* Adjust padding-top as needed */
+      text-align: center;
+      font-size: 24px;
+      line-height: 36px;
+    }
+  
+    .form {
+      flex-direction: column;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .form textarea {
+      padding: 10px;
+      width: 90%;
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+  
+    .hear {
+      margin-top: 30px; /* Adjust margin-top as needed */
+    }
+  
+    .hear h1 {
+      margin-left: 0; /* Center align the heading */
+    }
+  
+    .send {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px; /* Adjust margin-top as needed */
+    }
+  
+    .touch {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: center;
+    }
+  }
+  

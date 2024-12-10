@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    width:100%;
+}
+.aboutcontent{
+    margin-top: 150px;
+    text-align: center;
+    justify-content: center;
+    z-index: 2; /* Higher z-index than the overlay */
+}
+.abouthero{
+    position: relative; /* Enables positioning for the pseudo-element */
+    background-image: url(../../Assets/Hero.jpg);
+    background-size: cover;
+    width: 95%;
+    height: 450px;
+    margin-left: 30px;
+    margin-top: 15px;
+    overflow: hidden; /* Ensures the overlay doesn’t exceed the container */
+    /* background: linear-gradient(120deg, #ff7eb3, #ff758c, #ff6363);
+    background-size: 200% 200%; */
+    animation: gradientAnimation 6s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.abouthero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1; /* Places it above the image */
+}
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: inherit;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.intro{
+    display: flex;
+    margin-top: 70px;
+    justify-content: space-between;
+}
+.quality{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+}
+.promise{
+    display: flex;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+.introSection,
+.qualitySection,
+.promiseSection {
+    width: 100%;
+    margin: 0 20px;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    height: 360px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.introSection {
+    text-align: center;
+    padding: 30px;
+    
+}
+.image{ 
+    margin: 0px 120px;
+    margin-top: 85px;
+    width:210px;
+    height: 270px;
+    transition: transform 0.3s ease-in-out;
+    animation: float 3s ease-in-out infinite;
+}
+.middleImage{ 
+    margin:0px 70px;
+    margin-top: 85px;
+    width:210px;
+    height: 270px;
+    transition: transform 0.3s ease-in-out;
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+.image:hover, .middleImage:hover {
+    transform: scale(1.1);
+}
+.qualitySection {
+    background-color: #f1f5f8;
+}
+
+.promiseSection {
+    background-color: #fbfcfb;
+}
+
+.heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1D1D1D;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.heading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1;
+    animation: revealText 1.5s ease-in-out forwards;
+}
+
+@keyframes revealText {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+.paragraph {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    line-height: 1.8;
+    margin: 15px 0;
+    padding: 0 15px;
+}
+
+.cta {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: #ff6363;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cta:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ff4747;
+}
+
+@media only screen and (max-width: 768px) {
+    .contentContainer {
+        padding: 20px;
+    }
+
+    .heading {
+        font-size: 28px;
+    }
+
+    .paragraph {
+        font-size: 16px;
+    }
+
+    .cta {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .heading {
+        font-size: 24px;
+    }
+
+    .paragraph {
+        font-size: 15px;
+    }
+}

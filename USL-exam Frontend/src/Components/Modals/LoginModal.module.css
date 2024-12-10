@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.modaloverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Poppins, sans-serif;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+  }
+  
+  .modal {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .close {
+   justify-content: center;
+   text-align: center;
+   align-items: center;
+  cursor: pointer;
+  margin-left: 190px;
+  font-size: xx-large;
+  color: cornflowerblue;
+  }
+  
+  .modalcontent {
+    margin-top: 10px;
+    padding: 10px;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .message{
+    justify-content: center;
+    text-align: center;
+  }
+  .login {
+    background-color: cornflowerblue;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-family: Poppins, sans-serif;
+  }
+  .createaccount {
+    background-color:  cornflowerblue;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-family: Poppins, sans-serif;
+  }
+  .cancel {
+    background-color:  #ebd5d3;
+    color: #160e0e;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-family: Poppins, sans-serif;
+  }
+  .cancel button:hover {
+    background-color:cornflowerblue;
+  }
+
+  @media (max-width: 768px) {
+    .modal {
+      max-width: 90%;
+    }
+  
+    .close {
+      margin-left: auto;
+    }
+  
+    .buttons {
+      flex-direction: column;
+    }
+  
+    .login,
+    .createaccount {
+      margin-left: 0;
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+  @media (max-width: 430px) {
+    .modal {
+      max-width: 90%;
+    }
+  
+    .close {
+      margin-left: auto;
+    }
+  
+    .buttons {
+      flex-direction: column;
+    }
+  
+    .login,
+    .createaccount {
+      margin-left: 0;
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+  
+/* Responsive styles for 480px */
+@media only screen and (max-width: 480px) {
+  .modal {
+      max-width: 300px; /* Adjust max-width for smaller screens */
+  }
+
+  .close {
+      margin-left: 0; /* Center close button */
+  }
+
+  .buttons {
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center; /* Center buttons horizontally */
+  }
+
+  .login,
+  .createaccount {
+      margin-left: 0; /* Remove left margin for buttons */
+      margin-top: 10px; /* Add space between buttons */
+  }
+}
