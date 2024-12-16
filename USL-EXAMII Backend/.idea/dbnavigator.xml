@@ -16,8 +16,8 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="751523fe-f85e-4d3a-9702-050ce145c470">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
+    <connection id="67709fdb-1a86-43a9-8dcc-9f8509128c1d">
+      <console name="Fast Ticket" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -26,22 +26,18 @@
     </last-used-providers>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="751523fe-f85e-4d3a-9702-050ce145c470" object-ref="schemas/todb/tables/passengers_test" />
-      <object connection-id="751523fe-f85e-4d3a-9702-050ce145c470" object-ref="schemas/todb/tables/routes_local" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="751523fe-f85e-4d3a-9702-050ce145c470" />
+    <connection id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.routes_test" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.routes_local" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.operators_test" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.tickets_test" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.route_operator" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.routes" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="751523fe-f85e-4d3a-9702-050ce145c470" dataset="todb.passengers_test" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" dataset="fused.routes_local" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" dataset="fused.cart_item" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" dataset="fused.db_user" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" dataset="fused.buses" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" dataset="fused.tickets" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" dataset="fused.routes" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -49,9 +45,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="751523fe-f85e-4d3a-9702-050ce145c470" active="true" signed="true">
+      <connection id="67709fdb-1a86-43a9-8dcc-9f8509128c1d" active="true" signed="true">
         <database>
-          <name value="USL-EXAM" />
+          <name value="Fast Ticket" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -62,7 +58,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="todb" />
+          <database value="fused" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />

@@ -58,7 +58,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/auth/login-passengers`,
+        `${BASE_URL}/auth/login`,
         credentials,
         {
           headers: {

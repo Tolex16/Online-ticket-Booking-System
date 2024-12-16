@@ -11,7 +11,7 @@ const AllBuses = () => {
   useEffect(() => {
     const fetchBuses = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/buses`, {
+        const response = await axios.get(`${BASE_URL}/all-buses`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -37,7 +37,7 @@ const AllBuses = () => {
             <div key={bus.id} className={Styles.busCard}>
               <h2>{bus.name}</h2>
               <p><strong>Route:</strong> {bus.route.start} to {bus.route.end}</p>
-              <p><strong>Operator:</strong> {bus.operator.name}</p>
+              <p><strong>Operator:</strong> {bus.driverName}</p>
               <p><strong>Contact:</strong> {bus.operator.contact}</p>
               <p><strong>Day of Operation:</strong> {bus.dayOfOperation}</p>
               <p><strong>Time:</strong> {bus.time}</p>

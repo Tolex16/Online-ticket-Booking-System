@@ -7,15 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="usl-examii" />
-        <module name="USL-EXAMII" />
+        <module name="USLTEST" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="USL-EXAMII" options="-parameters" />
-      <module name="usl-examii" options="-parameters" />
+      <module name="USLTEST" options="-parameters" />
     </option>
   </component>
 </project>

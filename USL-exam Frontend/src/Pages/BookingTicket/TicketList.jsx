@@ -11,7 +11,7 @@ const PassengerTickets = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/passengers/tickets`, {
+        const response = await axios.get(`${BASE_URL}/passenger/all-tickets`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -26,9 +26,19 @@ const PassengerTickets = () => {
     fetchTickets();
   }, []);
 
+      // Cancel a ticket
+      const cancelTicket = (id) => {
+        axios.delete(`/passenger/cancel-ticket/${id}`)
+            .then(() => {
+                setTickets(tickets.filter(ticket => ticket.id !== id));
+                alert('Ticket canceled successfully.');
+            })
+            .catch(err => alert('Failed to cancel ticket. Please try again.'));
+    };
+
   return (
     <div className={Styles.container}>
-      <h1>Your Tickets</h1>
+      <h1>My Tickets</h1>
       {isLoading && <p>Loading tickets...</p>}
       {error && <p className={Styles.error}>{error}</p>}
       {!isLoading && !error && (
@@ -36,11 +46,18 @@ const PassengerTickets = () => {
           {tickets.map((ticket) => (
             <div key={ticket.id} className={Styles.ticketCard}>
               <h2>Ticket ID: {ticket.id}</h2>
-              <p><strong>Bus:</strong> {ticket.bus.name}</p>
-              <p><strong>Route:</strong> {ticket.bus.route.start} to {ticket.bus.route.end}</p>
-              <p><strong>Date:</strong> {ticket.dateOfTravel}</p>
-              <p><strong>Seats:</strong> {ticket.numberOfSeats}</p>
+              <p><strong>Passenger Name:</strong> {ticket.passengerName}</p>
+              <p><strong>Driver Name:</strong> {ticket.driverName}</p>
+              <p><strong>Estimated Duration:</strong> {ticket.estimatedDuration}</p>
+              <p><strong>Booking Date and Time:</strong> {ticket.bookingDateTime}</p>
+              <p><strong>Route:</strong> {ticket.origin} to {ticket.destination}</p>
+              <p><strong>Seat Number:</strong> {ticket.seatNumber}</p>
+              <p><strong>Price:</strong> {ticket.price}</p>
+              <p><strong>Departure Day:</strong> {ticket.departureDay}</p>
               <p><strong>Status:</strong> {ticket.status}</p>
+             {ticket.status !== 'CANCELLED' && (
+              <button onClick={() => cancelTicket(ticket.id)}>Cancel Ticket</button>
+            )}
             </div>
           ))}
         </div>
