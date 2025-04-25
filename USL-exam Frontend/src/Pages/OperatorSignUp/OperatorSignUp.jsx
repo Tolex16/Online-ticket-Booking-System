@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Style from "./SignUp.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import register from "../../Assets/register.jpg"
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../Components/Footer/Footer'
@@ -15,14 +15,34 @@ const OperatorSignUp = () => {
   const [error, setError] = useState("");
   const [validationErrors, setValidationErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
+  const [routes, setRoutes] = useState([]);
+  const [selectedRouteId, setSelectedRouteId] = useState('');
   const [bus , setBus] = useState
   ({driverName:'',
     busNumber:'',
     busModel:'',
     capacity:'',
-    routeId:'',
+    routeId: Number(selectedRouteId),
     phoneNumber:''});  
+
+    useEffect(() => {
+      const fetchRoutes = async () => {
+        try {
+          const response = await axios.get(`${BASE_URL}/passenger/all-routes`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+          console.log(response)
+          setRoutes(response.data);
+        } catch (err) {
+          setError("Failed to fetch routes. Please try again later.");
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchRoutes();
+    }, []);
 
 const validateFields = () => {
       const errors = {};
@@ -44,13 +64,14 @@ const validateFields = () => {
         axios.post(`${BASE_URL}/admin/create-bus`, bus,
         {
         headers:{
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
           'Content-Type': 'application/json',
         }
       });
 
       if (response.status === 200) {
         toast.success('Bus operator added');
-        navigate('/');
+        navigate('/home');
       } else {
         throw new Error('Registration failed');
       }
@@ -98,9 +119,22 @@ const validateFields = () => {
           <label>Bus Model:</label>
           <input type="text" name="busModel" value={bus.busModel} onChange={handleChange} placeholder="Enter your bus model" required/>
        
+          <label>Operator:</label>
+            <select
+              value={selectedRouteId}
+              onChange={(e) => setSelectedRouteId(e.target.value)}
+            >
+              <option value="">-- Select a route --</option>
+              {routes.map((route) => (
+                <option key={route.routeId} value={route.routeId}>
+                  {route.origin} - {route.destination}
+                </option>
+              ))}
+            </select>
+
           <label>Capacity:</label>
           <input type="number" name="capacity" value={bus.capacity} onChange={handleChange} placeholder="Enter your capacity" required/>
-          <button className={Style.register} disabled={isLoading} type="submit"> {isLoading ? "Signing Up...." : "Sign Up"} </button>
+          <button className={Style.register} disabled={isLoading} type="submit"> {isLoading ? "Registering...." : "Register"} </button>
           {error && <p className={Style.error}>{error}</p>}
         </form>
       </div>

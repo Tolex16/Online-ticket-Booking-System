@@ -3,7 +3,7 @@ import Style from './Navbar.module.css'
 import logo from "../../Assets/logo.png"
 import IconButton from '@mui/material/IconButton';
 import { ListRounded, Menu } from '@mui/icons-material';
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { LogoutOutlined } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
 import axios from 'axios';
@@ -18,12 +18,6 @@ const Navbar = () => {
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token); // Set true if token exists
-  }, []);
 
   const onClose = () => setIsModalOpen(false);
 
@@ -42,18 +36,18 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
         // Send logout request to the server
-        const response = await axios.post(`${BASE_URL}/users/logout`, {}, {
+        const response = await axios.post(`${BASE_URL}/users/logout`, { credentials: 'include' }, {
             withCredentials: true, // Include credentials (e.g., cookies)
         });
 
         if (response.status === 200) {
             // Clear tokens from localStorage
             localStorage.removeItem("token");
-            localStorage.removeItem("refreshToken");
+            //localStorage.removeItem("refreshToken");
 
             toast.success("Logged out successfully")
             // Redirect to login page
-            window.location.href = "/";
+            navigate("/home");
         } else {
             console.error("Logout failed:", response.statusText);
         }
@@ -102,7 +96,7 @@ const Navbar = () => {
             </Tooltip>
 
 
-          {isLoggedIn && location.pathname === '/' && (
+          {isAuthenticated() && location.pathname === '/' && (
             <Tooltip title="Logout">
               <LogoutOutlined onClick={handleLogout} className={Style.logout}  />
             </Tooltip>

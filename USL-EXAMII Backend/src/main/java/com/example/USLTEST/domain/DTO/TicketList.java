@@ -1,5 +1,6 @@
 package com.example.USLTEST.domain.DTO;
 
+import com.example.USLTEST.domain.entity.Status;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,8 @@ public class TicketList {
 
     private String departureDate;
 
+    private long ticketId;
+
     @FutureOrPresent(message = "Booking date and time cannot be in the past.")
     private LocalDateTime bookingDateTime;
 
@@ -35,4 +38,6 @@ public class TicketList {
     private String seatNumber;
 
     private double price;
+
+    private Status status;
 }

@@ -8,6 +8,9 @@
     margin-right: 550px;
    
   }
+  .form{
+    gap: 50px;
+  }
   
   /* Add some margin to the form */
   .container{

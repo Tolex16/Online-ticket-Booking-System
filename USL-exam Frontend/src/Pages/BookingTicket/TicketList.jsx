@@ -3,11 +3,15 @@ import axios from "axios";
 import { BASE_URL } from "../../config";
 import Styles from "./PassengerTickets.module.css";
 import { toast } from "react-toastify";
+import dateFormat from "dateformat";
 
 const PassengerTickets = () => {
   const [tickets, setTickets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const formatDate = (dateValue, mask = "d-mm-yyyy HH:MM") => {
+    return dateValue ? dateFormat(new Date(dateValue), mask) : "";
+  }
 
   useEffect(() => {
     const fetchTickets = async () => {
@@ -50,19 +54,19 @@ const PassengerTickets = () => {
       {!isLoading && !error && (
         <div className={Styles.ticketList}>
           {tickets.map((ticket) => (
-            <div key={ticket.id} className={Styles.ticketCard}>
-              <h2>Ticket ID: {ticket.id}</h2>
+            <div key={ticket.ticketId} className={Styles.ticketCard}>
+              <h2>Ticket ID: {ticket.ticketId}</h2>
               <p><strong>Passenger Name:</strong> {ticket.passengerName}</p>
               <p><strong>Driver Name:</strong> {ticket.driverName}</p>
               <p><strong>Estimated Duration:</strong> {ticket.estimatedDuration}</p>
-              <p><strong>Booking Date and Time:</strong> {ticket.bookingDateTime}</p>
+              <p><strong>Booking Date and Time:</strong> {formatDate(ticket.bookingDateTime)}</p>
               <p><strong>Route:</strong> {ticket.origin} - {ticket.destination}</p>
               <p><strong>Seat Number:</strong> {ticket.seatNumber}</p>
               <p><strong>Price:</strong> {ticket.price}</p>
-              <p><strong>Departure Date:</strong> {ticket.departureDay}</p>
+              <p><strong>Departure Date:</strong> {ticket.departureDate}</p>
               <p><strong>Status:</strong> {ticket.status}</p>
              {ticket.status !== 'CANCELLED' && (
-              <button onClick={() => cancelTicket(ticket.id)}>Cancel Ticket</button>
+              <button onClick={() => cancelTicket(ticket.ticketId)} className={Styles.cancelButton}>Cancel Ticket</button>
             )}
             </div>
           ))}

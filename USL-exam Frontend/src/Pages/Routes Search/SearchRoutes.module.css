@@ -21,7 +21,7 @@
       justify-content: center;
       text-align: center;
       margin-top: 2rem;
-      margin-bottom: 25rem;
+      margin-bottom: 5rem;
   }
   .container input{
     margin-right: 10px;
@@ -30,4 +30,12 @@
     margin: auto;
     justify-content: center;
     text-align: center;
+}
+.allRoutes{
+  max-width: 968px;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2rem;
+  color: black;
 }

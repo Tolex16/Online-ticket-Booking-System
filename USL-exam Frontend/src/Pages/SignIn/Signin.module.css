@@ -56,7 +56,7 @@
     }
 .container {
     display: flex;
-    margin-top: 20px;
+    margin-top: 120px;
     margin-left: 30px;
     height: 100%;
     font-family: Poppins, sans-serif;
@@ -124,7 +124,7 @@
     font-family: Poppins, sans-serif;
   }
   .forgot{
-    margin-left: 240px;
+    margin-left: 228px;
     margin-top: -10px;
     font-family: Poppins, sans-serif;
   }

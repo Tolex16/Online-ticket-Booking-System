@@ -1,6 +1,8 @@
 package com.example.USLTEST.domain.mapper.impl;
 
 import com.example.USLTEST.domain.DTO.RouteDto;
+import com.example.USLTEST.domain.DTO.SignUpDto;
+import com.example.USLTEST.domain.DTO.TicketList;
 import com.example.USLTEST.domain.entity.RouteEntity;
 import com.example.USLTEST.domain.mapper.Mapper;
 import lombok.RequiredArgsConstructor;

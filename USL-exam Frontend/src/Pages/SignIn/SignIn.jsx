@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Style from "./Signin.module.css";
 import buses from "../../Assets/register.jpg";
-import Footer from "../../Components/Footer/Footer";
+//import Footer from "../../Components/Footer/Footer";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import { BASE_URL } from "../../config";
@@ -72,7 +72,7 @@ const SignIn = () => {
         position: "top-right",
       });
 
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       if (err.response?.status === 401) {
         setError("Invalid email or password");
@@ -81,7 +81,7 @@ const SignIn = () => {
         });
       } else {
         setError("");
-        toast.error("An unexpected error occurred", {
+        toast.error("Invalid email or password", {
           position: "top-right",
         });
         console.error("Error signing in:", err);
@@ -161,7 +161,6 @@ const SignIn = () => {
         <img className={Style.image} src={buses} alt="Passengers boarding a bus" />
         </div>
       </div>
-      <Footer />
       <ToastContainer />
     </>
   );

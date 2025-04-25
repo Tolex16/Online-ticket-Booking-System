@@ -16,18 +16,18 @@ public class UsltestApplication {
 		SpringApplication.run(UsltestApplication.class, args);
 
 	}
-	@Bean
-	public CommandLineRunner init(UserRepository userRepository) {
-		return args -> {
-			if (userRepository.findByEmail("test2@gmail.com").isEmpty()) {
-				UserEntity admin = new UserEntity();
-				admin.setEmail("admin-ticket-booking@gmail.com");
-				admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
-				admin.setConfirmPassword(new BCryptPasswordEncoder().encode("admin"));
-				admin.setRole(Role.ADMIN);
-				userRepository.save(admin);
-			}
-		};
-	}
+//	@Bean
+//	public CommandLineRunner init(UserRepository userRepository) {
+//		return args -> {
+//			if (userRepository.findByEmail("test2@gmail.com").isEmpty()) {
+//				UserEntity admin = new UserEntity();
+//				admin.setEmail("admin-ticket-booking@gmail.com");
+//				admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
+//				admin.setConfirmPassword(new BCryptPasswordEncoder().encode("admin"));
+//				admin.setRole(Role.ADMIN);
+//				userRepository.save(admin);
+//			}
+//		};
+//	}
 }
 

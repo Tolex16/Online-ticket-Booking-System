@@ -87,7 +87,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public UserEntity findById(Long id) {
-
         return userRepository.findById(id).get();
     }
 

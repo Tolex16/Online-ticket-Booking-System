@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Style from "./SignUp.module.css";
 import { useState } from "react";
 import register from "../../Assets/register.jpg"
-import Footer from '../../Components/Footer/Footer'
+//import Footer from '../../Components/Footer/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -226,7 +226,6 @@ const validateFields = () => {
         <img className={Style.image} src={register} alt="Passengers boarding a bus" />
       </div>
     </div>
-    <Footer/> 
     <ToastContainer />
    </>
    

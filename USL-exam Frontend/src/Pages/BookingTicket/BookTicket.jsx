@@ -6,16 +6,17 @@ import { BASE_URL } from "../../config";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const BookTicket = () => {
   const { routeId } = useParams(); // Get the routeId from the URL
   const [buses, setBuses] = useState([]);
   const [selectedBusId, setSelectedBusId] = useState('');
   const [seatNumber, setSeatNumber] = useState('');
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
 
   // Function to validate form fields
   const validateFields = () => {
@@ -59,7 +60,8 @@ const BookTicket = () => {
       const token = localStorage.getItem('token');
       const response = await axios.post(
         `${BASE_URL}/passenger/book-ticket`,
-        { busId: selectedBusId, seatNumber },
+        { busId: Number(selectedBusId), 
+          seatNumber: seatNumber },
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -67,8 +69,8 @@ const BookTicket = () => {
         }
       );
       if (response.status === 201) {
-        alert('Ticket booked successfully!');
         toast.success("Ticket booked successfully!");
+        navigate("/my-tickets")
       }
 
     } catch (error) {
@@ -85,19 +87,6 @@ const BookTicket = () => {
     }
   };
 
-  // // Handler for input changes
-  // const handleChange = (e) => {
-  //   const { name } = e.target;
-  //   // setTicketDetails((prevDetails) => ({
-  //   //   ...prevDetails,
-  //   //   [name]: value,
-  //   // }));
-  //   setValidationErrors((prevErrors) => ({
-  //     ...prevErrors,
-  //     [name]: "", // Clear validation error for the field being edited
-  //   }));
-  // };
-
   return (
     <>
       <Navbar />
@@ -106,9 +95,9 @@ const BookTicket = () => {
         {isLoading && <p>Booking your ticket, please wait...</p>}
         {error && <p className={Styles.error}>{error}</p>}
 
-        <form className={Styles.form}>
-          <div>
-            <h3>Select a Bus</h3>
+        <form >
+          <div className={Styles.form}>
+          <label>Operator:</label>
             <select
               value={selectedBusId}
               onChange={(e) => setSelectedBusId(e.target.value)}
@@ -139,8 +128,8 @@ const BookTicket = () => {
         </form>
 
         <div className={Styles.buttonContainer}>
-          <button onClick={handleTicketBooking} className={Styles.bookButton}>
-            Book Ticket
+          <button disabled={isLoading} onClick={handleTicketBooking} className={Styles.bookButton}>
+            {isLoading ? "Booking" : "Book Ticket"}
           </button>
         </div>
       </div>

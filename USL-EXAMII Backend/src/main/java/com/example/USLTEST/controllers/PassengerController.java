@@ -3,6 +3,7 @@ package com.example.USLTEST.controllers;
 import com.example.USLTEST.Exception.UserAlreadyExistsException;
 import com.example.USLTEST.domain.DTO.*;
 import com.example.USLTEST.domain.entity.BusEntity;
+import com.example.USLTEST.domain.entity.RouteEntity;
 import com.example.USLTEST.domain.entity.TicketEntity;
 import com.example.USLTEST.domain.mapper.Mapper;
 import com.example.USLTEST.service.BusService;
@@ -27,8 +28,9 @@ public class PassengerController {
     private final BusService busService;
 
     private final Mapper<TicketEntity, TicketList> ticketMapper;
-    private final Mapper<BusEntity, OperatorList> operatorMapper;
+    private final Mapper<BusEntity, BusDto> operatorMapper;
 
+    private final Mapper<RouteEntity, RouteDto> routeMapper;
     private final UserService userService;
 
     @PostMapping("/book-ticket")
@@ -82,19 +84,20 @@ public class PassengerController {
     }
 
     @GetMapping("/get-operators")
-    public ResponseEntity<Iterable<OperatorList>> getAllOperators() {
+    public ResponseEntity<Iterable<BusDto>> getAllOperators() {
         Iterable<BusEntity> operators = busService.getAllOperators();
-        Iterable<OperatorList> allOperators = operatorMapper.mapListTo(operators);
+        Iterable<BusDto> allOperators = operatorMapper.mapListTo(operators);
         return ResponseEntity.ok(allOperators);
     }
+
     @GetMapping("/get-operators-route/{routeId}")
-    public ResponseEntity<Iterable<OperatorList>> getAllOperatorsByRoute((@PathVariable Long routeId) {
+    public ResponseEntity<Iterable<BusDto>> getAllOperatorsByRoute(@PathVariable Long routeId) {
         Iterable<BusEntity> operators = busService.getOperatorsByRoute(routeId);
-        Iterable<OperatorList> allOperatorsByRoute = operatorMapper.mapListTo(operators);
+        Iterable<BusDto> allOperatorsByRoute = operatorMapper.mapListTo(operators);
         return ResponseEntity.ok(allOperatorsByRoute);
     }
     @GetMapping("/all-buses-route/{routeId}")
-    public ResponseEntity<List<BusDto>> getAllBusesByRoute((@PathVariable Long routeId) {
+    public ResponseEntity<List<BusDto>> getAllBusesByRoute(@PathVariable Long routeId) {
         return busService.getBusesByRouteId(routeId);
     }
 
@@ -112,6 +115,13 @@ public class PassengerController {
     public ResponseEntity<List<RouteDto>> getAllRoutes() {
         return routeService.getAllRoutes();
     }
+
+//    @GetMapping("/get-routes")
+//    public ResponseEntity<Iterable<RouteDto>> getAllRoutesIterable() {
+//        Iterable<RouteEntity> routeEntityIterable = routeService.getAllRoutesIterable();
+//        Iterable<RouteDto> allRoutes = routeMapper.mapListTo(routeEntityIterable);
+//        return ResponseEntity.ok(allRoutes);
+//    }
 
 //    @GetMapping("/bus/{routeId}")
 //    public ResponseEntity<List<BusDto>> getRoutesByBusId(@PathVariable Long busId) {

@@ -21,6 +21,7 @@ public class TicketListMapperImpl implements Mapper<TicketEntity, TicketList> {
     public TicketList mapTo(TicketEntity tickets) {
         TicketList ticketDto = new TicketList();
 
+        ticketDto.setTicketId(tickets.getTicketId());
         ticketDto.setPassengerName(tickets.getUser().getFirstName() + " " + tickets.getUser().getLastName());
         ticketDto.setSeatNumber(tickets.getSeatNumber());
         ticketDto.setEstimatedDuration(tickets.getRoute().getDuration());
@@ -31,6 +32,7 @@ public class TicketListMapperImpl implements Mapper<TicketEntity, TicketList> {
         ticketDto.setBusNumber(tickets.getBus().getBusNumber());
         ticketDto.setDriverName(tickets.getBus().getDriverName());
         ticketDto.setDepartureDate(String.valueOf(tickets.getRoute().getDepartureDate()));
+        ticketDto.setStatus(tickets.getStatus());
 
         return ticketDto;
     }

@@ -1,6 +1,7 @@
 package com.example.USLTEST.service.impl;
 
 import com.example.USLTEST.domain.DTO.RouteDto;
+import com.example.USLTEST.domain.entity.BusEntity;
 import com.example.USLTEST.domain.entity.RouteEntity;
 import com.example.USLTEST.domain.mapper.Mapper;
 import com.example.USLTEST.repository.RouteRepository;
@@ -70,6 +71,11 @@ public class RouteServiceImpl implements RouteService {
                 .map(routeMapper::mapTo)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(routes, HttpStatus.OK);
+    }
+
+    public Iterable<RouteEntity> getAllRoutesIterable() {
+        Iterable<RouteEntity> routes = routeRepository.findAll();
+        return routes;
     }
 
 //    @Override

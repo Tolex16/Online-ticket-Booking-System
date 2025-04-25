@@ -46,7 +46,7 @@ const handleAllBuses = () => navigate("/all-buses");
         <p className={Style.paragraph}> Transverse scenic routes</p>
 
         <Destinations/>
-        <button className={Style.createaccount} onClick={routePopup}>View All Routes</button>
+        <button className={Style.createAccount} onClick={routePopup}>View All Routes</button>
         <br/>
         <br/>
         <br/>
@@ -57,7 +57,7 @@ const handleAllBuses = () => navigate("/all-buses");
         <br />
         <br />
         <br />
-        <button className={Style.createaccount} onClick={busPopup}>View More</button>
+        <button className={Style.createAccount} onClick={busPopup}>View More</button>
         <br/>
         <br/>
         <br/>

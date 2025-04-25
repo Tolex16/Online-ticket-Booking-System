@@ -18,7 +18,20 @@ public class BusMapperImpl implements Mapper<BusEntity, BusDto> {
 
     @Override
     public BusDto mapTo(BusEntity busEntity) {
-        return modelMapper.map(busEntity, BusDto.class);
+
+        BusDto busDto = new BusDto();
+
+        busDto.setOrigin(busEntity.getRoute().getOrigin());
+        busDto.setDestination(busEntity.getRoute().getDestination());
+        busDto.setDepartureDate(busEntity.getRoute().getDepartureDate());
+        busDto.setDepartureTime(busEntity.getRoute().getDepartureTime());
+        busDto.setDriverName(busEntity.getDriverName());
+        busDto.setBusModel(busEntity.getBusModel());
+        busDto.setPhoneNumber(busEntity.getPhoneNumber());
+        busDto.setCapacity(busEntity.getCapacity());
+        busDto.setBusNumber(busEntity.getBusNumber());
+
+        return busDto;
     }
 
     @Override

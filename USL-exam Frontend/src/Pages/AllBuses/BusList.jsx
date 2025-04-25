@@ -11,7 +11,7 @@ const AllBuses = () => {
   useEffect(() => {
     const fetchBuses = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/all-buses`, {
+        const response = await axios.get(`${BASE_URL}/passenger/all-buses`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -34,11 +34,13 @@ const AllBuses = () => {
       {!isLoading && !error && (
         <div className={Styles.busList}>
           {buses.map((bus) => (
-            <div key={bus.id} className={Styles.busCard}>
+            <div key={bus.busId} className={Styles.busCard}>
               <h2>{bus.name}</h2>
               <p><strong>Route:</strong> {bus.origin} to {bus.destination}</p>
               <p><strong>Operator:</strong> {bus.driverName}</p>
-              <p><strong>Contact:</strong> {bus.phoneNumber}</p>
+              <p><strong>Bus Number:</strong> {bus.busNumber}</p>
+              <p><strong>Bus Model:</strong> {bus.busModel}</p>
+              <p><strong>Operator Contact:</strong> {bus.phoneNumber}</p>
               <p><strong>Departure Date:</strong> {bus.departureDate}</p>
               <p><strong>Capacity:</strong> {bus.capacity}</p>
             </div>

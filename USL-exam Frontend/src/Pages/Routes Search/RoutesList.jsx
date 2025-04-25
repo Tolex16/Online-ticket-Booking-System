@@ -16,9 +16,10 @@ const RoutesList = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
+        console.log(response)
         setRoutes(response.data);
       } catch (err) {
-        setError("Failed to fetch buses. Please try again later.");
+        setError("Failed to fetch routes. Please try again later.");
       } finally {
         setIsLoading(false);
       }
@@ -32,9 +33,9 @@ const RoutesList = () => {
       {isLoading && <p>Loading routes....</p>}
       {error && <p className={Styles.error}>{error}</p>}
       {!isLoading && !error && (
-        <div className={Styles.busList}>
+        <div className={Styles.routeList}>
           {routes.map((route) => (
-            <div key={route.routeId} className={Styles.busCard}>
+            <div key={route.routeId} className={Styles.routeCard}>
               <p><strong>Route:</strong> {route.origin} to {route.destination}</p>
               <p><strong>Departure Date:</strong> {route.departureDate}</p>
               <p><strong>Departure Time:</strong> {route.departureTime}</p>

@@ -27,9 +27,12 @@ const SearchRoutes = () => {
         })
         .then(response => setRoutes(response.data))
         .catch(err => console.error(err));
+        console.log(routes)
+
     };
     
     const handleSelectRoute = (routeId) => {
+        console.log(routeId)
         navigate(`/book-ticket/${routeId}`);
       };
     
@@ -56,18 +59,18 @@ const SearchRoutes = () => {
             </div>
 
             {routes.length > 0 && (     
-        <div>
+        <div className={Style.allRoutes}>
             <h3>Available Routes</h3>
             <ul>
                 {routes.map(route => (
-                    <li key={route.routeId}>
+                    <div key={route.routeId} className={Style.allRoutes}>
                         <p><strong>Route:</strong>{route.origin} → {route.destination} ({route.departureDate})</p>
                         <p><strong>Price:</strong> ₦{route.price}</p>
                         <p><strong>Duration:</strong> {route.duration}</p>
                         <button className={Style.send} onClick={() => handleSelectRoute(route.routeId)}>
                   Select Route
                 </button>
-                    </li>
+                    </div>
                 ))}
             </ul>
         </div>
