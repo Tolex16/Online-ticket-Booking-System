@@ -62,7 +62,7 @@ const PassengerTickets = () => {
               <p><strong>Booking Date and Time:</strong> {formatDate(ticket.bookingDateTime)}</p>
               <p><strong>Route:</strong> {ticket.origin} - {ticket.destination}</p>
               <p><strong>Seat Number:</strong> {ticket.seatNumber}</p>
-              <p><strong>Price:</strong> {ticket.price}</p>
+              <p><strong>Price:</strong> ₦{ticket.price}</p>
               <p><strong>Departure Date:</strong> {ticket.departureDate}</p>
               <p><strong>Status:</strong> {ticket.status}</p>
              {ticket.status !== 'CANCELLED' && (
